@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+void arvore(int ln, int N)
+{
+  if (ln == 1)
+  {
+    for (int esp=1; esp <= N-ln; esp++) printf(" ");
+    printf("*\n");
+  }
+  else if (ln > 1)
+  {
+    arvore(ln-1, N);
+    for (int esp=1; esp <= N-ln; esp++) printf(" ");
+    for (int ast=1; ast <= 2*(ln-1)+1; ast++) printf("*");
+    printf("\n");
+  }
+}
+
+void arvoreInvertida(int ln, int N)
+{
+  if (ln == 1)
+  {
+    for (int esp=1; esp <= N-ln; esp++) printf(" ");
+    printf("*\n");
+  }
+  else if (ln > 1)
+  {    
+    for (int esp=1; esp <= N-ln; esp++) printf(" ");
+    for (int ast=1; ast <= 2*(ln-1)+1; ast++) printf("*");
+    printf("\n");
+
+    arvoreInvertida(ln-1, N);
+  }
+}
+
+void losango (int metade)
+{
+  arvore(metade,metade);
+  arvoreInvertida(metade-1,metade);
+}
+
+int main(void) 
+{
+  int metade;
+
+  scanf("%d",&metade);
+  losango(metade);
+
+  return 0;
+}
